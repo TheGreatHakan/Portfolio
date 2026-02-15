@@ -7,7 +7,7 @@ import { provideZard } from '@/shared/core/provider/providezard';
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { firebaseConfig } from './firebase.config';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: 'FIREBASE_APP',
       useFactory: () => {
-        const app = initializeApp(firebaseConfig);
+        const app = initializeApp(environment.firebase);
         if (typeof window !== 'undefined') {
           getAnalytics(app);
         }
